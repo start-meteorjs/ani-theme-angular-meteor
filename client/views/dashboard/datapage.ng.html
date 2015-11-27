@@ -5,21 +5,34 @@
   <span class="fa fa-apple bg-fade"></span>
   <div class="jumbotron">
 
-  	<h3>Seasonal Fruits</h3>
+    <div class="col-sm-5">
+      <h3>Seasonal Fruits</h3>
+      <label>
+        <input type="checkbox" ng-model="$parent.citrus" />
+        Show only citrus fruits
+      </label>
+    </div>
   	
-  	<label>
-      <input type="checkbox" ng-model="$parent.citrus" />
-      Show only citrus
-    </label>
+    <div class="col-sm-7">
+      <login-buttons></login-buttons>
+    </div>
     
-	  <ul>
-	    <li ng-repeat="fruit in fruits">
+    <ul class="fruits" ng-if="$root.currentUser">
+	    <li ng-repeat="fruit in fruits" class="liFruits">
+	    	<button class="delete" ng-click="fruits.remove(fruit)">&times;</button>
 	      <span class="text">{{fruit.text}}</span>
+        <span class="pull-right">- {{fruit.username}}</span>
 	    </li>
 	  </ul>
 
-	  <form class="new-task" ng-submit="test()">
-      <input type="text" name="text" placeholder="Type to add more fruits" ng-model="text" />
+	  <form class="new-task" ng-submit="addFruit(newFruit); newFruit='';" ng-if="$root.currentUser">
+      <input type="text" name="text" placeholder="Type to add more fruits" ng-model="newFruit" />
     </form>
+    
+    <p ng-hide="$root.currentUser">
+      Please sign in to see the information
+    </p>
+  
+    
   </div>
 </div>

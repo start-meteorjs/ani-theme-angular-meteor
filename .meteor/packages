@@ -21,3 +21,6 @@ angularui:angular-ui-router
 less
 fortawesome:fontawesome
 angular:angular-animate
+dotansimha:accounts-ui-angular
+accounts-ui
+accounts-password

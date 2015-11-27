@@ -1,7 +1,12 @@
 Fruits = new Mongo.Collection('fruits');
 
 if (Meteor.isClient) {
-	angular.module('anitheme', ['angular-meteor', 'ui.router', 'ngAnimate']);
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
+
+	angular.module('anitheme', ['angular-meteor', 'ui.router', 'ngAnimate', 'accounts.ui']);
  
   angular.module('anitheme').config(function($stateProvider, $urlRouterProvider) {
 
@@ -80,14 +85,13 @@ if (Meteor.isClient) {
           $scope.query = {};
       });
       
-      $scope.test = function () {
-        
+      $scope.addFruit = function (newFruit) {
         Fruits.insert({
-          text: $scope.text,
-          citrus: false
+          text: newFruit,
+          citrus: false,
+          username: Meteor.user().username
         });
     
-        $scope.text = "";
       }
       
     }]);
