@@ -1,0 +1,25 @@
+<div>
+  <header>
+    <h1>Displaying data from Mongo</h1>
+  </header>
+  <span class="fa fa-apple bg-fade"></span>
+  <div class="jumbotron">
+
+  	<h3>Seasonal Fruits</h3>
+  	
+  	<label>
+      <input type="checkbox" ng-model="$parent.citrus" />
+      Show only citrus
+    </label>
+    
+	  <ul>
+	    <li ng-repeat="fruit in fruits">
+	      <span class="text">{{fruit.text}}</span>
+	    </li>
+	  </ul>
+
+	  <form class="new-task" ng-submit="test()">
+      <input type="text" name="text" placeholder="Type to add more fruits" ng-model="text" />
+    </form>
+  </div>
+</div>
