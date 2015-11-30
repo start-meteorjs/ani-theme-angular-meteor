@@ -13,11 +13,7 @@
       </label>
     </div>
   	
-    <div class="col-sm-7">
-      <login-buttons></login-buttons>
-    </div>
-    
-    <ul class="fruits" ng-if="$root.currentUser">
+    <ul class="fruits">
 	    <li ng-repeat="fruit in fruits" class="liFruits">
 	    	<button class="delete" ng-click="fruits.remove(fruit)">&times;</button>
 	      <span class="text">{{fruit.text}}</span>
@@ -25,14 +21,8 @@
 	    </li>
 	  </ul>
 
-	  <form class="new-task" ng-submit="addFruit(newFruit); newFruit='';" ng-if="$root.currentUser">
+	  <form class="new-task" ng-submit="addFruit(newFruit); newFruit='';">
       <input type="text" name="text" placeholder="Type to add more fruits" ng-model="newFruit" />
     </form>
-    
-    <p ng-hide="$root.currentUser">
-      Please sign in to see the information
-    </p>
-  
-    
   </div>
 </div>
