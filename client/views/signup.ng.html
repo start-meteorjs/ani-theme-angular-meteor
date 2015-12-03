@@ -1,0 +1,28 @@
+<div class="login-page">
+	<div class="row">
+		<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+        	<img src="/flat-avatar.png" class="user-avatar" />
+			<h1>Ani Theme</h1>
+			<form role="form" ng-submit="createuser(username, email, passwd, passwd1);passwd='';passwd1='';">
+				<div class="form-content">
+					<div class="form-group">
+						<input type="text" class="form-control input-underline input-lg" id="" placeholder="Name" ng-model="username">
+					</div>
+
+					<div class="form-group">
+						<input type="text" class="form-control input-underline input-lg" id="" placeholder="email address" ng-model="email">
+					</div>
+
+					<div class="form-group">
+						<input type="password" class="form-control input-underline input-lg" id="" placeholder="password" ng-model="passwd">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-underline input-lg" id="" placeholder="repeat password" ng-model="passwd1">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login">Register</button>&nbsp;
+				<a ui-sref="login"><button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login page</button></a>
+			</form>
+		</div>	
+	</div>
+</div>

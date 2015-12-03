@@ -26,6 +26,11 @@ if (Meteor.isClient) {
           templateUrl: 'client/views/login.ng.html',
           controller: 'LoginCtrl'
         })
+        .state('signup', {
+          url: '/signup',
+          templateUrl: 'client/views/signup.ng.html',
+          controller: 'LoginCtrl'
+        })
         .state('dashboard', {
           url: '/dashboard',
           templateUrl: 'client/views/dashboard.ng.html',
@@ -70,6 +75,8 @@ if (Meteor.isClient) {
 
   angular.module('anitheme').controller('DashboardCtrl', function($scope, $state, $location) {
     $scope.$state = $state;
+    
+    $scope.user = Meteor.user().username;
 
     $scope.logout = function(){
       Meteor.logout();
@@ -100,11 +107,27 @@ if (Meteor.isClient) {
         return false;
       }
 
-      $scope.createuser = function(email, passwd){
-        Accounts.createUser({
-            email: email,
-            password: passwd
-        });
+      $scope.createuser = function(username, email, passwd, passwd1){
+        if(passwd == passwd1){
+          Accounts.createUser({
+              username: username,
+              email: email,
+              password: passwd
+          });
+
+          Meteor.loginWithPassword(email, passwd);
+
+          Accounts.onLoginFailure(function(){
+            $location.path('/login');
+          });
+
+          Accounts.onLogin(function(){
+            $location.path('/dashboard');
+          });
+
+        }
+        else
+          alert("passwords donot match");
       }
 
   });
