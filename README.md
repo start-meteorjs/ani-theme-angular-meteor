@@ -2,6 +2,8 @@
 
 This project is a port of the famous [Free Ani AngularJS Theme](http://startangular.com/product/ani-theme/) to Meteor.js plus angular Theme.
 
+### Note: This project is no longer maintained. 
+
 ## Installation
 ####1. Clone this project or Download that ZIP file
 
